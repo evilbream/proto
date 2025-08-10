@@ -1,0 +1,62 @@
+syntax="proto3";
+
+option go_package = "github.com/evilbream/proto/fs;fs";
+
+message PingServerRequest {
+}
+
+message PingServerResponse {
+    string message = 1;
+}
+
+message ListdirRequest {
+    string path = 1; // The directory path to list files from
+    bool listDotEntries = 2; // Whether to include hidden files (starting with dot)
+}
+
+message ListdirResponse {
+    repeated string files = 1;
+    repeated string dirs = 2;
+}
+
+message GetFileRequest {
+    string path = 1; // The file path to retrieve
+    optional int32 chunk_size = 2; // Size of each chunk to retrieve (optional)
+}
+
+message GetFileResponse {
+    bytes chunk = 1; // The content of the file
+    int64 total_size = 2; // Total size of the file
+    int64 offset = 3; // Offset for the file content
+    bool is_last_chunk = 4; // Indicates if this is the last chunk of the file
+}
+
+message PutFileRequest {
+    string path = 1; // The file path to save the content to
+    bytes chunk = 2; // The content of the file
+    int64 total_size = 3; // Total size of the file
+    int64 offset = 4; // Offset for the file content
+    bool is_last_chunk = 5; // Indicates if this is the last chunk of the file
+}
+
+message PutFileResponse {
+    bool success = 1; // Indicates if the file was successfully saved
+}
+
+message CompressDirectoryRequest {
+    string path = 1; // The directory path to compress
+    string algorithm = 2; // Compression algorithm (e.g., "zip", "tar")
+}
+
+message CompressDirectoryResponse {
+    bool success = 2; // Indicates if the compression was successful
+}
+
+service FileServer {
+    rpc ListDir(ListdirRequest) returns (ListdirResponse);
+    rpc GetFile(GetFileRequest) returns (stream GetFileResponse);
+    rpc PutFile(stream PutFileRequest) returns (PutFileResponse);
+    rpc UpdateFile(PutFileRequest) returns (PutFileResponse); // for small text files only
+    rpc CompressDirectory(CompressDirectoryRequest) returns (CompressDirectoryResponse);
+    rpc Ping(PingServerRequest) returns (PingServerResponse);
+}
