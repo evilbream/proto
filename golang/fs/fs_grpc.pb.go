@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v3.21.12
-// source: fs/fs.proto
+// source: fs.proto
 
 package fs
 
@@ -304,5 +304,5 @@ var FileServer_ServiceDesc = grpc.ServiceDesc{
 			ClientStreams: true,
 		},
 	},
-	Metadata: "fs/fs.proto",
+	Metadata: "fs.proto",
 }
