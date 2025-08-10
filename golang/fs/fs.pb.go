@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v3.21.12
-// source: fs.proto
+// source: fs/fs.proto
 
 package fs
 
@@ -29,7 +29,7 @@ type PingServerRequest struct {
 
 func (x *PingServerRequest) Reset() {
 	*x = PingServerRequest{}
-	mi := &file_fs_proto_msgTypes[0]
+	mi := &file_fs_fs_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -41,7 +41,7 @@ func (x *PingServerRequest) String() string {
 func (*PingServerRequest) ProtoMessage() {}
 
 func (x *PingServerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[0]
+	mi := &file_fs_fs_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -54,7 +54,7 @@ func (x *PingServerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PingServerRequest.ProtoReflect.Descriptor instead.
 func (*PingServerRequest) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{0}
+	return file_fs_fs_proto_rawDescGZIP(), []int{0}
 }
 
 type PingServerResponse struct {
@@ -66,7 +66,7 @@ type PingServerResponse struct {
 
 func (x *PingServerResponse) Reset() {
 	*x = PingServerResponse{}
-	mi := &file_fs_proto_msgTypes[1]
+	mi := &file_fs_fs_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -78,7 +78,7 @@ func (x *PingServerResponse) String() string {
 func (*PingServerResponse) ProtoMessage() {}
 
 func (x *PingServerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[1]
+	mi := &file_fs_fs_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -91,7 +91,7 @@ func (x *PingServerResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PingServerResponse.ProtoReflect.Descriptor instead.
 func (*PingServerResponse) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{1}
+	return file_fs_fs_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *PingServerResponse) GetMessage() string {
@@ -111,7 +111,7 @@ type ListdirRequest struct {
 
 func (x *ListdirRequest) Reset() {
 	*x = ListdirRequest{}
-	mi := &file_fs_proto_msgTypes[2]
+	mi := &file_fs_fs_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -123,7 +123,7 @@ func (x *ListdirRequest) String() string {
 func (*ListdirRequest) ProtoMessage() {}
 
 func (x *ListdirRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[2]
+	mi := &file_fs_fs_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -136,7 +136,7 @@ func (x *ListdirRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListdirRequest.ProtoReflect.Descriptor instead.
 func (*ListdirRequest) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{2}
+	return file_fs_fs_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListdirRequest) GetPath() string {
@@ -163,7 +163,7 @@ type ListdirResponse struct {
 
 func (x *ListdirResponse) Reset() {
 	*x = ListdirResponse{}
-	mi := &file_fs_proto_msgTypes[3]
+	mi := &file_fs_fs_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -175,7 +175,7 @@ func (x *ListdirResponse) String() string {
 func (*ListdirResponse) ProtoMessage() {}
 
 func (x *ListdirResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[3]
+	mi := &file_fs_fs_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -188,7 +188,7 @@ func (x *ListdirResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListdirResponse.ProtoReflect.Descriptor instead.
 func (*ListdirResponse) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{3}
+	return file_fs_fs_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListdirResponse) GetFiles() []string {
@@ -215,7 +215,7 @@ type GetFileRequest struct {
 
 func (x *GetFileRequest) Reset() {
 	*x = GetFileRequest{}
-	mi := &file_fs_proto_msgTypes[4]
+	mi := &file_fs_fs_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -227,7 +227,7 @@ func (x *GetFileRequest) String() string {
 func (*GetFileRequest) ProtoMessage() {}
 
 func (x *GetFileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[4]
+	mi := &file_fs_fs_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -240,7 +240,7 @@ func (x *GetFileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetFileRequest.ProtoReflect.Descriptor instead.
 func (*GetFileRequest) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{4}
+	return file_fs_fs_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetFileRequest) GetPath() string {
@@ -269,7 +269,7 @@ type GetFileResponse struct {
 
 func (x *GetFileResponse) Reset() {
 	*x = GetFileResponse{}
-	mi := &file_fs_proto_msgTypes[5]
+	mi := &file_fs_fs_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -281,7 +281,7 @@ func (x *GetFileResponse) String() string {
 func (*GetFileResponse) ProtoMessage() {}
 
 func (x *GetFileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[5]
+	mi := &file_fs_fs_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -294,7 +294,7 @@ func (x *GetFileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetFileResponse.ProtoReflect.Descriptor instead.
 func (*GetFileResponse) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{5}
+	return file_fs_fs_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetFileResponse) GetChunk() []byte {
@@ -338,7 +338,7 @@ type PutFileRequest struct {
 
 func (x *PutFileRequest) Reset() {
 	*x = PutFileRequest{}
-	mi := &file_fs_proto_msgTypes[6]
+	mi := &file_fs_fs_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -350,7 +350,7 @@ func (x *PutFileRequest) String() string {
 func (*PutFileRequest) ProtoMessage() {}
 
 func (x *PutFileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[6]
+	mi := &file_fs_fs_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -363,7 +363,7 @@ func (x *PutFileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PutFileRequest.ProtoReflect.Descriptor instead.
 func (*PutFileRequest) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{6}
+	return file_fs_fs_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *PutFileRequest) GetPath() string {
@@ -410,7 +410,7 @@ type PutFileResponse struct {
 
 func (x *PutFileResponse) Reset() {
 	*x = PutFileResponse{}
-	mi := &file_fs_proto_msgTypes[7]
+	mi := &file_fs_fs_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -422,7 +422,7 @@ func (x *PutFileResponse) String() string {
 func (*PutFileResponse) ProtoMessage() {}
 
 func (x *PutFileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[7]
+	mi := &file_fs_fs_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -435,7 +435,7 @@ func (x *PutFileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PutFileResponse.ProtoReflect.Descriptor instead.
 func (*PutFileResponse) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{7}
+	return file_fs_fs_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *PutFileResponse) GetSuccess() bool {
@@ -455,7 +455,7 @@ type CompressDirectoryRequest struct {
 
 func (x *CompressDirectoryRequest) Reset() {
 	*x = CompressDirectoryRequest{}
-	mi := &file_fs_proto_msgTypes[8]
+	mi := &file_fs_fs_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -467,7 +467,7 @@ func (x *CompressDirectoryRequest) String() string {
 func (*CompressDirectoryRequest) ProtoMessage() {}
 
 func (x *CompressDirectoryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[8]
+	mi := &file_fs_fs_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -480,7 +480,7 @@ func (x *CompressDirectoryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CompressDirectoryRequest.ProtoReflect.Descriptor instead.
 func (*CompressDirectoryRequest) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{8}
+	return file_fs_fs_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *CompressDirectoryRequest) GetPath() string {
@@ -506,7 +506,7 @@ type CompressDirectoryResponse struct {
 
 func (x *CompressDirectoryResponse) Reset() {
 	*x = CompressDirectoryResponse{}
-	mi := &file_fs_proto_msgTypes[9]
+	mi := &file_fs_fs_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -518,7 +518,7 @@ func (x *CompressDirectoryResponse) String() string {
 func (*CompressDirectoryResponse) ProtoMessage() {}
 
 func (x *CompressDirectoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[9]
+	mi := &file_fs_fs_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -531,7 +531,7 @@ func (x *CompressDirectoryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CompressDirectoryResponse.ProtoReflect.Descriptor instead.
 func (*CompressDirectoryResponse) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{9}
+	return file_fs_fs_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *CompressDirectoryResponse) GetSuccess() bool {
@@ -541,11 +541,11 @@ func (x *CompressDirectoryResponse) GetSuccess() bool {
 	return false
 }
 
-var File_fs_proto protoreflect.FileDescriptor
+var File_fs_fs_proto protoreflect.FileDescriptor
 
-const file_fs_proto_rawDesc = "" +
+const file_fs_fs_proto_rawDesc = "" +
 	"\n" +
-	"\bfs.proto\"\x13\n" +
+	"\vfs/fs.proto\"\x13\n" +
 	"\x11PingServerRequest\".\n" +
 	"\x12PingServerResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\"N\n" +
@@ -588,22 +588,22 @@ const file_fs_proto_rawDesc = "" +
 	"\n" +
 	"UpdateFile\x12\x0f.PutFileRequest\x1a\x10.PutFileResponse\x12J\n" +
 	"\x11CompressDirectory\x12\x19.CompressDirectoryRequest\x1a\x1a.CompressDirectoryResponse\x12/\n" +
-	"\x04Ping\x12\x12.PingServerRequest\x1a\x13.PingServerResponseB\"Z github.com/evilbream/proto/fs;fsb\x06proto3"
+	"\x04Ping\x12\x12.PingServerRequest\x1a\x13.PingServerResponseB)Z'github.com/evilbream/proto/golang/fs;fsb\x06proto3"
 
 var (
-	file_fs_proto_rawDescOnce sync.Once
-	file_fs_proto_rawDescData []byte
+	file_fs_fs_proto_rawDescOnce sync.Once
+	file_fs_fs_proto_rawDescData []byte
 )
 
-func file_fs_proto_rawDescGZIP() []byte {
-	file_fs_proto_rawDescOnce.Do(func() {
-		file_fs_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_fs_proto_rawDesc), len(file_fs_proto_rawDesc)))
+func file_fs_fs_proto_rawDescGZIP() []byte {
+	file_fs_fs_proto_rawDescOnce.Do(func() {
+		file_fs_fs_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_fs_fs_proto_rawDesc), len(file_fs_fs_proto_rawDesc)))
 	})
-	return file_fs_proto_rawDescData
+	return file_fs_fs_proto_rawDescData
 }
 
-var file_fs_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
-var file_fs_proto_goTypes = []any{
+var file_fs_fs_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_fs_fs_proto_goTypes = []any{
 	(*PingServerRequest)(nil),         // 0: PingServerRequest
 	(*PingServerResponse)(nil),        // 1: PingServerResponse
 	(*ListdirRequest)(nil),            // 2: ListdirRequest
@@ -615,7 +615,7 @@ var file_fs_proto_goTypes = []any{
 	(*CompressDirectoryRequest)(nil),  // 8: CompressDirectoryRequest
 	(*CompressDirectoryResponse)(nil), // 9: CompressDirectoryResponse
 }
-var file_fs_proto_depIdxs = []int32{
+var file_fs_fs_proto_depIdxs = []int32{
 	2, // 0: FileServer.ListDir:input_type -> ListdirRequest
 	4, // 1: FileServer.GetFile:input_type -> GetFileRequest
 	6, // 2: FileServer.PutFile:input_type -> PutFileRequest
@@ -635,27 +635,27 @@ var file_fs_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_fs_proto_init() }
-func file_fs_proto_init() {
-	if File_fs_proto != nil {
+func init() { file_fs_fs_proto_init() }
+func file_fs_fs_proto_init() {
+	if File_fs_fs_proto != nil {
 		return
 	}
-	file_fs_proto_msgTypes[4].OneofWrappers = []any{}
+	file_fs_fs_proto_msgTypes[4].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_fs_proto_rawDesc), len(file_fs_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_fs_fs_proto_rawDesc), len(file_fs_fs_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_fs_proto_goTypes,
-		DependencyIndexes: file_fs_proto_depIdxs,
-		MessageInfos:      file_fs_proto_msgTypes,
+		GoTypes:           file_fs_fs_proto_goTypes,
+		DependencyIndexes: file_fs_fs_proto_depIdxs,
+		MessageInfos:      file_fs_fs_proto_msgTypes,
 	}.Build()
-	File_fs_proto = out.File
-	file_fs_proto_goTypes = nil
-	file_fs_proto_depIdxs = nil
+	File_fs_fs_proto = out.File
+	file_fs_fs_proto_goTypes = nil
+	file_fs_fs_proto_depIdxs = nil
 }

@@ -1,6 +1,6 @@
 syntax="proto3";
 
-option go_package = "github.com/evilbream/proto/fs;fs";
+option go_package = "github.com/evilbream/proto/golang/fs;fs";
 
 message PingServerRequest {
 }
