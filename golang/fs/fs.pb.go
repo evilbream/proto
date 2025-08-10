@@ -103,8 +103,8 @@ func (x *PingServerResponse) GetMessage() string {
 
 type ListdirRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	Path           string                 `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`                      // The directory path to list files from
-	ListDotEntries bool                   `protobuf:"varint,2,opt,name=listDotEntries,proto3" json:"listDotEntries,omitempty"` // Whether to include hidden files (starting with dot)
+	Path           string                 `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`                                              // The directory path to list files from
+	ListDotEntries bool                   `protobuf:"varint,2,opt,name=list_dot_entries,json=listDotEntries,proto3" json:"list_dot_entries,omitempty"` // Whether to include hidden files (starting with dot)
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -499,7 +499,7 @@ func (x *CompressDirectoryRequest) GetAlgorithm() string {
 
 type CompressDirectoryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,2,opt,name=success,proto3" json:"success,omitempty"` // Indicates if the compression was successful
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"` // Indicates if the compression was successful
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -548,10 +548,10 @@ const file_fs_proto_rawDesc = "" +
 	"\bfs.proto\"\x13\n" +
 	"\x11PingServerRequest\".\n" +
 	"\x12PingServerResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\"L\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\"N\n" +
 	"\x0eListdirRequest\x12\x12\n" +
-	"\x04path\x18\x01 \x01(\tR\x04path\x12&\n" +
-	"\x0elistDotEntries\x18\x02 \x01(\bR\x0elistDotEntries\";\n" +
+	"\x04path\x18\x01 \x01(\tR\x04path\x12(\n" +
+	"\x10list_dot_entries\x18\x02 \x01(\bR\x0elistDotEntries\";\n" +
 	"\x0fListdirResponse\x12\x14\n" +
 	"\x05files\x18\x01 \x03(\tR\x05files\x12\x12\n" +
 	"\x04dirs\x18\x02 \x03(\tR\x04dirs\"W\n" +
@@ -579,7 +579,7 @@ const file_fs_proto_rawDesc = "" +
 	"\x04path\x18\x01 \x01(\tR\x04path\x12\x1c\n" +
 	"\talgorithm\x18\x02 \x01(\tR\talgorithm\"5\n" +
 	"\x19CompressDirectoryResponse\x12\x18\n" +
-	"\asuccess\x18\x02 \x01(\bR\asuccess2\xc8\x02\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc8\x02\n" +
 	"\n" +
 	"FileServer\x12,\n" +
 	"\aListDir\x12\x0f.ListdirRequest\x1a\x10.ListdirResponse\x12.\n" +

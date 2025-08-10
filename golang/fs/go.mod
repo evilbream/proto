@@ -1,4 +1,4 @@
-module fs
+module github.com/evilbream/proto/golang/fs
 
 go 1.24.3
 

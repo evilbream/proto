@@ -11,7 +11,7 @@ message PingServerResponse {
 
 message ListdirRequest {
     string path = 1; // The directory path to list files from
-    bool listDotEntries = 2; // Whether to include hidden files (starting with dot)
+    bool list_dot_entries = 2; // Whether to include hidden files (starting with dot)
 }
 
 message ListdirResponse {
@@ -49,7 +49,7 @@ message CompressDirectoryRequest {
 }
 
 message CompressDirectoryResponse {
-    bool success = 2; // Indicates if the compression was successful
+    bool success = 1; // Indicates if the compression was successful
 }
 
 service FileServer {
