@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v3.21.12
-// source: fs.proto
+// source: fs/fs.proto
 
 package fs
 
@@ -25,6 +25,8 @@ const (
 	FileServer_UpdateFile_FullMethodName        = "/FileServer/UpdateFile"
 	FileServer_CompressDirectory_FullMethodName = "/FileServer/CompressDirectory"
 	FileServer_Ping_FullMethodName              = "/FileServer/Ping"
+	FileServer_GetFileInfo_FullMethodName       = "/FileServer/GetFileInfo"
+	FileServer_StreamFile_FullMethodName        = "/FileServer/StreamFile"
 )
 
 // FileServerClient is the client API for FileServer service.
@@ -37,6 +39,8 @@ type FileServerClient interface {
 	UpdateFile(ctx context.Context, in *PutFileRequest, opts ...grpc.CallOption) (*PutFileResponse, error)
 	CompressDirectory(ctx context.Context, in *CompressDirectoryRequest, opts ...grpc.CallOption) (*CompressDirectoryResponse, error)
 	Ping(ctx context.Context, in *PingServerRequest, opts ...grpc.CallOption) (*PingServerResponse, error)
+	GetFileInfo(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (*GetFileResponse, error)
+	StreamFile(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[GetStreamRequest, GetStreamResponse], error)
 }
 
 type fileServerClient struct {
@@ -119,6 +123,29 @@ func (c *fileServerClient) Ping(ctx context.Context, in *PingServerRequest, opts
 	return out, nil
 }
 
+func (c *fileServerClient) GetFileInfo(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (*GetFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetFileResponse)
+	err := c.cc.Invoke(ctx, FileServer_GetFileInfo_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fileServerClient) StreamFile(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[GetStreamRequest, GetStreamResponse], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &FileServer_ServiceDesc.Streams[2], FileServer_StreamFile_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[GetStreamRequest, GetStreamResponse]{ClientStream: stream}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type FileServer_StreamFileClient = grpc.BidiStreamingClient[GetStreamRequest, GetStreamResponse]
+
 // FileServerServer is the server API for FileServer service.
 // All implementations must embed UnimplementedFileServerServer
 // for forward compatibility.
@@ -129,6 +156,8 @@ type FileServerServer interface {
 	UpdateFile(context.Context, *PutFileRequest) (*PutFileResponse, error)
 	CompressDirectory(context.Context, *CompressDirectoryRequest) (*CompressDirectoryResponse, error)
 	Ping(context.Context, *PingServerRequest) (*PingServerResponse, error)
+	GetFileInfo(context.Context, *GetFileRequest) (*GetFileResponse, error)
+	StreamFile(grpc.BidiStreamingServer[GetStreamRequest, GetStreamResponse]) error
 	mustEmbedUnimplementedFileServerServer()
 }
 
@@ -156,6 +185,12 @@ func (UnimplementedFileServerServer) CompressDirectory(context.Context, *Compres
 }
 func (UnimplementedFileServerServer) Ping(context.Context, *PingServerRequest) (*PingServerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+}
+func (UnimplementedFileServerServer) GetFileInfo(context.Context, *GetFileRequest) (*GetFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFileInfo not implemented")
+}
+func (UnimplementedFileServerServer) StreamFile(grpc.BidiStreamingServer[GetStreamRequest, GetStreamResponse]) error {
+	return status.Errorf(codes.Unimplemented, "method StreamFile not implemented")
 }
 func (UnimplementedFileServerServer) mustEmbedUnimplementedFileServerServer() {}
 func (UnimplementedFileServerServer) testEmbeddedByValue()                    {}
@@ -268,6 +303,31 @@ func _FileServer_Ping_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FileServer_GetFileInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileServerServer).GetFileInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FileServer_GetFileInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileServerServer).GetFileInfo(ctx, req.(*GetFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FileServer_StreamFile_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(FileServerServer).StreamFile(&grpc.GenericServerStream[GetStreamRequest, GetStreamResponse]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type FileServer_StreamFileServer = grpc.BidiStreamingServer[GetStreamRequest, GetStreamResponse]
+
 // FileServer_ServiceDesc is the grpc.ServiceDesc for FileServer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -291,6 +351,10 @@ var FileServer_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "Ping",
 			Handler:    _FileServer_Ping_Handler,
 		},
+		{
+			MethodName: "GetFileInfo",
+			Handler:    _FileServer_GetFileInfo_Handler,
+		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
@@ -303,6 +367,12 @@ var FileServer_ServiceDesc = grpc.ServiceDesc{
 			Handler:       _FileServer_PutFile_Handler,
 			ClientStreams: true,
 		},
+		{
+			StreamName:    "StreamFile",
+			Handler:       _FileServer_StreamFile_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
 	},
-	Metadata: "fs.proto",
+	Metadata: "fs/fs.proto",
 }

@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v3.21.12
-// source: fs.proto
+// source: fs/fs.proto
 
 package fs
 
@@ -29,7 +29,7 @@ type PingServerRequest struct {
 
 func (x *PingServerRequest) Reset() {
 	*x = PingServerRequest{}
-	mi := &file_fs_proto_msgTypes[0]
+	mi := &file_fs_fs_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -41,7 +41,7 @@ func (x *PingServerRequest) String() string {
 func (*PingServerRequest) ProtoMessage() {}
 
 func (x *PingServerRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[0]
+	mi := &file_fs_fs_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -54,7 +54,7 @@ func (x *PingServerRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PingServerRequest.ProtoReflect.Descriptor instead.
 func (*PingServerRequest) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{0}
+	return file_fs_fs_proto_rawDescGZIP(), []int{0}
 }
 
 type PingServerResponse struct {
@@ -66,7 +66,7 @@ type PingServerResponse struct {
 
 func (x *PingServerResponse) Reset() {
 	*x = PingServerResponse{}
-	mi := &file_fs_proto_msgTypes[1]
+	mi := &file_fs_fs_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -78,7 +78,7 @@ func (x *PingServerResponse) String() string {
 func (*PingServerResponse) ProtoMessage() {}
 
 func (x *PingServerResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[1]
+	mi := &file_fs_fs_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -91,7 +91,7 @@ func (x *PingServerResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PingServerResponse.ProtoReflect.Descriptor instead.
 func (*PingServerResponse) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{1}
+	return file_fs_fs_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *PingServerResponse) GetMessage() string {
@@ -111,7 +111,7 @@ type ListdirRequest struct {
 
 func (x *ListdirRequest) Reset() {
 	*x = ListdirRequest{}
-	mi := &file_fs_proto_msgTypes[2]
+	mi := &file_fs_fs_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -123,7 +123,7 @@ func (x *ListdirRequest) String() string {
 func (*ListdirRequest) ProtoMessage() {}
 
 func (x *ListdirRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[2]
+	mi := &file_fs_fs_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -136,7 +136,7 @@ func (x *ListdirRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListdirRequest.ProtoReflect.Descriptor instead.
 func (*ListdirRequest) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{2}
+	return file_fs_fs_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ListdirRequest) GetPath() string {
@@ -163,7 +163,7 @@ type ListdirResponse struct {
 
 func (x *ListdirResponse) Reset() {
 	*x = ListdirResponse{}
-	mi := &file_fs_proto_msgTypes[3]
+	mi := &file_fs_fs_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -175,7 +175,7 @@ func (x *ListdirResponse) String() string {
 func (*ListdirResponse) ProtoMessage() {}
 
 func (x *ListdirResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[3]
+	mi := &file_fs_fs_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -188,7 +188,7 @@ func (x *ListdirResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListdirResponse.ProtoReflect.Descriptor instead.
 func (*ListdirResponse) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{3}
+	return file_fs_fs_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ListdirResponse) GetFiles() []string {
@@ -215,7 +215,7 @@ type GetFileRequest struct {
 
 func (x *GetFileRequest) Reset() {
 	*x = GetFileRequest{}
-	mi := &file_fs_proto_msgTypes[4]
+	mi := &file_fs_fs_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -227,7 +227,7 @@ func (x *GetFileRequest) String() string {
 func (*GetFileRequest) ProtoMessage() {}
 
 func (x *GetFileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[4]
+	mi := &file_fs_fs_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -240,7 +240,7 @@ func (x *GetFileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetFileRequest.ProtoReflect.Descriptor instead.
 func (*GetFileRequest) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{4}
+	return file_fs_fs_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetFileRequest) GetPath() string {
@@ -259,17 +259,19 @@ func (x *GetFileRequest) GetChunkSize() int32 {
 
 type GetFileResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Chunk         []byte                 `protobuf:"bytes,1,opt,name=chunk,proto3" json:"chunk,omitempty"`                                   // The content of the file
-	TotalSize     int64                  `protobuf:"varint,2,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`         // Total size of the file
-	Offset        int64                  `protobuf:"varint,3,opt,name=offset,proto3" json:"offset,omitempty"`                                // Offset for the file content
-	IsLastChunk   bool                   `protobuf:"varint,4,opt,name=is_last_chunk,json=isLastChunk,proto3" json:"is_last_chunk,omitempty"` // Indicates if this is the last chunk of the file
+	Chunk         []byte                 `protobuf:"bytes,1,opt,name=chunk,proto3" json:"chunk,omitempty"`                                      // The content of the file
+	TotalSize     int64                  `protobuf:"varint,2,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`            // Total size of the file
+	Offset        int64                  `protobuf:"varint,3,opt,name=offset,proto3" json:"offset,omitempty"`                                   // Offset for the file content
+	IsLastChunk   bool                   `protobuf:"varint,4,opt,name=is_last_chunk,json=isLastChunk,proto3" json:"is_last_chunk,omitempty"`    // Indicates if this is the last chunk of the file
+	ContentType   string                 `protobuf:"bytes,5,opt,name=content_type,json=contentType,proto3" json:"content_type,omitempty"`       // MIME type of the file
+	ContentLength string                 `protobuf:"bytes,6,opt,name=content_length,json=contentLength,proto3" json:"content_length,omitempty"` // Total length of the file
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetFileResponse) Reset() {
 	*x = GetFileResponse{}
-	mi := &file_fs_proto_msgTypes[5]
+	mi := &file_fs_fs_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -281,7 +283,7 @@ func (x *GetFileResponse) String() string {
 func (*GetFileResponse) ProtoMessage() {}
 
 func (x *GetFileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[5]
+	mi := &file_fs_fs_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -294,7 +296,7 @@ func (x *GetFileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetFileResponse.ProtoReflect.Descriptor instead.
 func (*GetFileResponse) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{5}
+	return file_fs_fs_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetFileResponse) GetChunk() []byte {
@@ -325,6 +327,20 @@ func (x *GetFileResponse) GetIsLastChunk() bool {
 	return false
 }
 
+func (x *GetFileResponse) GetContentType() string {
+	if x != nil {
+		return x.ContentType
+	}
+	return ""
+}
+
+func (x *GetFileResponse) GetContentLength() string {
+	if x != nil {
+		return x.ContentLength
+	}
+	return ""
+}
+
 type PutFileRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Path          string                 `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`                                     // The file path to save the content to
@@ -332,13 +348,14 @@ type PutFileRequest struct {
 	TotalSize     int64                  `protobuf:"varint,3,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`         // Total size of the file
 	Offset        int64                  `protobuf:"varint,4,opt,name=offset,proto3" json:"offset,omitempty"`                                // Offset for the file content
 	IsLastChunk   bool                   `protobuf:"varint,5,opt,name=is_last_chunk,json=isLastChunk,proto3" json:"is_last_chunk,omitempty"` // Indicates if this is the last chunk of the file
+	Extension     string                 `protobuf:"bytes,6,opt,name=extension,proto3" json:"extension,omitempty"`                           // File extension to convert to (optional)
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *PutFileRequest) Reset() {
 	*x = PutFileRequest{}
-	mi := &file_fs_proto_msgTypes[6]
+	mi := &file_fs_fs_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -350,7 +367,7 @@ func (x *PutFileRequest) String() string {
 func (*PutFileRequest) ProtoMessage() {}
 
 func (x *PutFileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[6]
+	mi := &file_fs_fs_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -363,7 +380,7 @@ func (x *PutFileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PutFileRequest.ProtoReflect.Descriptor instead.
 func (*PutFileRequest) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{6}
+	return file_fs_fs_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *PutFileRequest) GetPath() string {
@@ -401,6 +418,13 @@ func (x *PutFileRequest) GetIsLastChunk() bool {
 	return false
 }
 
+func (x *PutFileRequest) GetExtension() string {
+	if x != nil {
+		return x.Extension
+	}
+	return ""
+}
+
 type PutFileResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"` // Indicates if the file was successfully saved
@@ -410,7 +434,7 @@ type PutFileResponse struct {
 
 func (x *PutFileResponse) Reset() {
 	*x = PutFileResponse{}
-	mi := &file_fs_proto_msgTypes[7]
+	mi := &file_fs_fs_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -422,7 +446,7 @@ func (x *PutFileResponse) String() string {
 func (*PutFileResponse) ProtoMessage() {}
 
 func (x *PutFileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[7]
+	mi := &file_fs_fs_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -435,7 +459,7 @@ func (x *PutFileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PutFileResponse.ProtoReflect.Descriptor instead.
 func (*PutFileResponse) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{7}
+	return file_fs_fs_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *PutFileResponse) GetSuccess() bool {
@@ -455,7 +479,7 @@ type CompressDirectoryRequest struct {
 
 func (x *CompressDirectoryRequest) Reset() {
 	*x = CompressDirectoryRequest{}
-	mi := &file_fs_proto_msgTypes[8]
+	mi := &file_fs_fs_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -467,7 +491,7 @@ func (x *CompressDirectoryRequest) String() string {
 func (*CompressDirectoryRequest) ProtoMessage() {}
 
 func (x *CompressDirectoryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[8]
+	mi := &file_fs_fs_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -480,7 +504,7 @@ func (x *CompressDirectoryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CompressDirectoryRequest.ProtoReflect.Descriptor instead.
 func (*CompressDirectoryRequest) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{8}
+	return file_fs_fs_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *CompressDirectoryRequest) GetPath() string {
@@ -506,7 +530,7 @@ type CompressDirectoryResponse struct {
 
 func (x *CompressDirectoryResponse) Reset() {
 	*x = CompressDirectoryResponse{}
-	mi := &file_fs_proto_msgTypes[9]
+	mi := &file_fs_fs_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -518,7 +542,7 @@ func (x *CompressDirectoryResponse) String() string {
 func (*CompressDirectoryResponse) ProtoMessage() {}
 
 func (x *CompressDirectoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_fs_proto_msgTypes[9]
+	mi := &file_fs_fs_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -531,7 +555,7 @@ func (x *CompressDirectoryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CompressDirectoryResponse.ProtoReflect.Descriptor instead.
 func (*CompressDirectoryResponse) Descriptor() ([]byte, []int) {
-	return file_fs_proto_rawDescGZIP(), []int{9}
+	return file_fs_fs_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *CompressDirectoryResponse) GetSuccess() bool {
@@ -541,11 +565,147 @@ func (x *CompressDirectoryResponse) GetSuccess() bool {
 	return false
 }
 
-var File_fs_proto protoreflect.FileDescriptor
+type GetStreamRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Path          string                 `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`                             // The file path to stream
+	ChunkSize     int64                  `protobuf:"varint,2,opt,name=chunk_size,json=chunkSize,proto3" json:"chunk_size,omitempty"` // Size of each chunk to stream
+	StartByte     int64                  `protobuf:"varint,3,opt,name=start_byte,json=startByte,proto3" json:"start_byte,omitempty"` // Offset to start streaming from
+	EndByte       int64                  `protobuf:"varint,4,opt,name=end_byte,json=endByte,proto3" json:"end_byte,omitempty"`       // Total length to stream
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
 
-const file_fs_proto_rawDesc = "" +
+func (x *GetStreamRequest) Reset() {
+	*x = GetStreamRequest{}
+	mi := &file_fs_fs_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetStreamRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetStreamRequest) ProtoMessage() {}
+
+func (x *GetStreamRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_fs_fs_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetStreamRequest.ProtoReflect.Descriptor instead.
+func (*GetStreamRequest) Descriptor() ([]byte, []int) {
+	return file_fs_fs_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *GetStreamRequest) GetPath() string {
+	if x != nil {
+		return x.Path
+	}
+	return ""
+}
+
+func (x *GetStreamRequest) GetChunkSize() int64 {
+	if x != nil {
+		return x.ChunkSize
+	}
+	return 0
+}
+
+func (x *GetStreamRequest) GetStartByte() int64 {
+	if x != nil {
+		return x.StartByte
+	}
+	return 0
+}
+
+func (x *GetStreamRequest) GetEndByte() int64 {
+	if x != nil {
+		return x.EndByte
+	}
+	return 0
+}
+
+type GetStreamResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Chunk         []byte                 `protobuf:"bytes,1,opt,name=chunk,proto3" json:"chunk,omitempty"`                                       // The content chunk of the file
+	TotalSize     int64                  `protobuf:"varint,2,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`             // Offset for the file content
+	ContentLength int64                  `protobuf:"varint,3,opt,name=content_length,json=contentLength,proto3" json:"content_length,omitempty"` // Total length of the file
+	ContentRange  string                 `protobuf:"bytes,4,opt,name=content_range,json=contentRange,proto3" json:"content_range,omitempty"`     // Content-Range header value
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetStreamResponse) Reset() {
+	*x = GetStreamResponse{}
+	mi := &file_fs_fs_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetStreamResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetStreamResponse) ProtoMessage() {}
+
+func (x *GetStreamResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_fs_fs_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetStreamResponse.ProtoReflect.Descriptor instead.
+func (*GetStreamResponse) Descriptor() ([]byte, []int) {
+	return file_fs_fs_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *GetStreamResponse) GetChunk() []byte {
+	if x != nil {
+		return x.Chunk
+	}
+	return nil
+}
+
+func (x *GetStreamResponse) GetTotalSize() int64 {
+	if x != nil {
+		return x.TotalSize
+	}
+	return 0
+}
+
+func (x *GetStreamResponse) GetContentLength() int64 {
+	if x != nil {
+		return x.ContentLength
+	}
+	return 0
+}
+
+func (x *GetStreamResponse) GetContentRange() string {
+	if x != nil {
+		return x.ContentRange
+	}
+	return ""
+}
+
+var File_fs_fs_proto protoreflect.FileDescriptor
+
+const file_fs_fs_proto_rawDesc = "" +
 	"\n" +
-	"\bfs.proto\"\x13\n" +
+	"\vfs/fs.proto\"\x13\n" +
 	"\x11PingServerRequest\".\n" +
 	"\x12PingServerResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\"N\n" +
@@ -559,27 +719,43 @@ const file_fs_proto_rawDesc = "" +
 	"\x04path\x18\x01 \x01(\tR\x04path\x12\"\n" +
 	"\n" +
 	"chunk_size\x18\x02 \x01(\x05H\x00R\tchunkSize\x88\x01\x01B\r\n" +
-	"\v_chunk_size\"\x82\x01\n" +
+	"\v_chunk_size\"\xcc\x01\n" +
 	"\x0fGetFileResponse\x12\x14\n" +
 	"\x05chunk\x18\x01 \x01(\fR\x05chunk\x12\x1d\n" +
 	"\n" +
 	"total_size\x18\x02 \x01(\x03R\ttotalSize\x12\x16\n" +
 	"\x06offset\x18\x03 \x01(\x03R\x06offset\x12\"\n" +
-	"\ris_last_chunk\x18\x04 \x01(\bR\visLastChunk\"\x95\x01\n" +
+	"\ris_last_chunk\x18\x04 \x01(\bR\visLastChunk\x12!\n" +
+	"\fcontent_type\x18\x05 \x01(\tR\vcontentType\x12%\n" +
+	"\x0econtent_length\x18\x06 \x01(\tR\rcontentLength\"\xb3\x01\n" +
 	"\x0ePutFileRequest\x12\x12\n" +
 	"\x04path\x18\x01 \x01(\tR\x04path\x12\x14\n" +
 	"\x05chunk\x18\x02 \x01(\fR\x05chunk\x12\x1d\n" +
 	"\n" +
 	"total_size\x18\x03 \x01(\x03R\ttotalSize\x12\x16\n" +
 	"\x06offset\x18\x04 \x01(\x03R\x06offset\x12\"\n" +
-	"\ris_last_chunk\x18\x05 \x01(\bR\visLastChunk\"+\n" +
+	"\ris_last_chunk\x18\x05 \x01(\bR\visLastChunk\x12\x1c\n" +
+	"\textension\x18\x06 \x01(\tR\textension\"+\n" +
 	"\x0fPutFileResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"L\n" +
 	"\x18CompressDirectoryRequest\x12\x12\n" +
 	"\x04path\x18\x01 \x01(\tR\x04path\x12\x1c\n" +
 	"\talgorithm\x18\x02 \x01(\tR\talgorithm\"5\n" +
 	"\x19CompressDirectoryResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc8\x02\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x7f\n" +
+	"\x10GetStreamRequest\x12\x12\n" +
+	"\x04path\x18\x01 \x01(\tR\x04path\x12\x1d\n" +
+	"\n" +
+	"chunk_size\x18\x02 \x01(\x03R\tchunkSize\x12\x1d\n" +
+	"\n" +
+	"start_byte\x18\x03 \x01(\x03R\tstartByte\x12\x19\n" +
+	"\bend_byte\x18\x04 \x01(\x03R\aendByte\"\x94\x01\n" +
+	"\x11GetStreamResponse\x12\x14\n" +
+	"\x05chunk\x18\x01 \x01(\fR\x05chunk\x12\x1d\n" +
+	"\n" +
+	"total_size\x18\x02 \x01(\x03R\ttotalSize\x12%\n" +
+	"\x0econtent_length\x18\x03 \x01(\x03R\rcontentLength\x12#\n" +
+	"\rcontent_range\x18\x04 \x01(\tR\fcontentRange2\xb3\x03\n" +
 	"\n" +
 	"FileServer\x12,\n" +
 	"\aListDir\x12\x0f.ListdirRequest\x1a\x10.ListdirResponse\x12.\n" +
@@ -588,22 +764,25 @@ const file_fs_proto_rawDesc = "" +
 	"\n" +
 	"UpdateFile\x12\x0f.PutFileRequest\x1a\x10.PutFileResponse\x12J\n" +
 	"\x11CompressDirectory\x12\x19.CompressDirectoryRequest\x1a\x1a.CompressDirectoryResponse\x12/\n" +
-	"\x04Ping\x12\x12.PingServerRequest\x1a\x13.PingServerResponseB\x1fZ\x1dgithub.com/evilbream/proto/fsb\x06proto3"
+	"\x04Ping\x12\x12.PingServerRequest\x1a\x13.PingServerResponse\x120\n" +
+	"\vGetFileInfo\x12\x0f.GetFileRequest\x1a\x10.GetFileResponse\x127\n" +
+	"\n" +
+	"StreamFile\x12\x11.GetStreamRequest\x1a\x12.GetStreamResponse(\x010\x01B\x1fZ\x1dgithub.com/evilbream/proto/fsb\x06proto3"
 
 var (
-	file_fs_proto_rawDescOnce sync.Once
-	file_fs_proto_rawDescData []byte
+	file_fs_fs_proto_rawDescOnce sync.Once
+	file_fs_fs_proto_rawDescData []byte
 )
 
-func file_fs_proto_rawDescGZIP() []byte {
-	file_fs_proto_rawDescOnce.Do(func() {
-		file_fs_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_fs_proto_rawDesc), len(file_fs_proto_rawDesc)))
+func file_fs_fs_proto_rawDescGZIP() []byte {
+	file_fs_fs_proto_rawDescOnce.Do(func() {
+		file_fs_fs_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_fs_fs_proto_rawDesc), len(file_fs_fs_proto_rawDesc)))
 	})
-	return file_fs_proto_rawDescData
+	return file_fs_fs_proto_rawDescData
 }
 
-var file_fs_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
-var file_fs_proto_goTypes = []any{
+var file_fs_fs_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_fs_fs_proto_goTypes = []any{
 	(*PingServerRequest)(nil),         // 0: PingServerRequest
 	(*PingServerResponse)(nil),        // 1: PingServerResponse
 	(*ListdirRequest)(nil),            // 2: ListdirRequest
@@ -614,48 +793,54 @@ var file_fs_proto_goTypes = []any{
 	(*PutFileResponse)(nil),           // 7: PutFileResponse
 	(*CompressDirectoryRequest)(nil),  // 8: CompressDirectoryRequest
 	(*CompressDirectoryResponse)(nil), // 9: CompressDirectoryResponse
+	(*GetStreamRequest)(nil),          // 10: GetStreamRequest
+	(*GetStreamResponse)(nil),         // 11: GetStreamResponse
 }
-var file_fs_proto_depIdxs = []int32{
-	2, // 0: FileServer.ListDir:input_type -> ListdirRequest
-	4, // 1: FileServer.GetFile:input_type -> GetFileRequest
-	6, // 2: FileServer.PutFile:input_type -> PutFileRequest
-	6, // 3: FileServer.UpdateFile:input_type -> PutFileRequest
-	8, // 4: FileServer.CompressDirectory:input_type -> CompressDirectoryRequest
-	0, // 5: FileServer.Ping:input_type -> PingServerRequest
-	3, // 6: FileServer.ListDir:output_type -> ListdirResponse
-	5, // 7: FileServer.GetFile:output_type -> GetFileResponse
-	7, // 8: FileServer.PutFile:output_type -> PutFileResponse
-	7, // 9: FileServer.UpdateFile:output_type -> PutFileResponse
-	9, // 10: FileServer.CompressDirectory:output_type -> CompressDirectoryResponse
-	1, // 11: FileServer.Ping:output_type -> PingServerResponse
-	6, // [6:12] is the sub-list for method output_type
-	0, // [0:6] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+var file_fs_fs_proto_depIdxs = []int32{
+	2,  // 0: FileServer.ListDir:input_type -> ListdirRequest
+	4,  // 1: FileServer.GetFile:input_type -> GetFileRequest
+	6,  // 2: FileServer.PutFile:input_type -> PutFileRequest
+	6,  // 3: FileServer.UpdateFile:input_type -> PutFileRequest
+	8,  // 4: FileServer.CompressDirectory:input_type -> CompressDirectoryRequest
+	0,  // 5: FileServer.Ping:input_type -> PingServerRequest
+	4,  // 6: FileServer.GetFileInfo:input_type -> GetFileRequest
+	10, // 7: FileServer.StreamFile:input_type -> GetStreamRequest
+	3,  // 8: FileServer.ListDir:output_type -> ListdirResponse
+	5,  // 9: FileServer.GetFile:output_type -> GetFileResponse
+	7,  // 10: FileServer.PutFile:output_type -> PutFileResponse
+	7,  // 11: FileServer.UpdateFile:output_type -> PutFileResponse
+	9,  // 12: FileServer.CompressDirectory:output_type -> CompressDirectoryResponse
+	1,  // 13: FileServer.Ping:output_type -> PingServerResponse
+	5,  // 14: FileServer.GetFileInfo:output_type -> GetFileResponse
+	11, // 15: FileServer.StreamFile:output_type -> GetStreamResponse
+	8,  // [8:16] is the sub-list for method output_type
+	0,  // [0:8] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_fs_proto_init() }
-func file_fs_proto_init() {
-	if File_fs_proto != nil {
+func init() { file_fs_fs_proto_init() }
+func file_fs_fs_proto_init() {
+	if File_fs_fs_proto != nil {
 		return
 	}
-	file_fs_proto_msgTypes[4].OneofWrappers = []any{}
+	file_fs_fs_proto_msgTypes[4].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_fs_proto_rawDesc), len(file_fs_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_fs_fs_proto_rawDesc), len(file_fs_fs_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_fs_proto_goTypes,
-		DependencyIndexes: file_fs_proto_depIdxs,
-		MessageInfos:      file_fs_proto_msgTypes,
+		GoTypes:           file_fs_fs_proto_goTypes,
+		DependencyIndexes: file_fs_fs_proto_depIdxs,
+		MessageInfos:      file_fs_fs_proto_msgTypes,
 	}.Build()
-	File_fs_proto = out.File
-	file_fs_proto_goTypes = nil
-	file_fs_proto_depIdxs = nil
+	File_fs_fs_proto = out.File
+	file_fs_fs_proto_goTypes = nil
+	file_fs_fs_proto_depIdxs = nil
 }

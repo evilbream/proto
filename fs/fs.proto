@@ -29,6 +29,8 @@ message GetFileResponse {
     int64 total_size = 2; // Total size of the file
     int64 offset = 3; // Offset for the file content
     bool is_last_chunk = 4; // Indicates if this is the last chunk of the file
+    string content_type = 5; // MIME type of the file
+    string content_length = 6; // Total length of the file
 }
 
 message PutFileRequest {
@@ -37,6 +39,7 @@ message PutFileRequest {
     int64 total_size = 3; // Total size of the file
     int64 offset = 4; // Offset for the file content
     bool is_last_chunk = 5; // Indicates if this is the last chunk of the file
+    string extension = 6; // File extension to convert to (optional)
 }
 
 message PutFileResponse {
@@ -52,6 +55,21 @@ message CompressDirectoryResponse {
     bool success = 1; // Indicates if the compression was successful
 }
 
+message GetStreamRequest {
+    string path = 1; // The file path to stream
+    int64 chunk_size = 2; // Size of each chunk to stream
+    int64 start_byte = 3; // Offset to start streaming from
+    int64 end_byte = 4; // Total length to stream
+}
+
+message GetStreamResponse {
+    bytes chunk = 1; // The content chunk of the file
+    int64 total_size = 2; // Offset for the file content
+    int64 content_length = 3; // Total length of the file
+    string content_range = 4; // Content-Range header value
+}
+
+
 service FileServer {
     rpc ListDir(ListdirRequest) returns (ListdirResponse);
     rpc GetFile(GetFileRequest) returns (stream GetFileResponse);
@@ -59,4 +77,6 @@ service FileServer {
     rpc UpdateFile(PutFileRequest) returns (PutFileResponse); // for small text files only
     rpc CompressDirectory(CompressDirectoryRequest) returns (CompressDirectoryResponse);
     rpc Ping(PingServerRequest) returns (PingServerResponse);
+    rpc GetFileInfo(GetFileRequest) returns (GetFileResponse);
+    rpc StreamFile(stream GetStreamRequest) returns (stream GetStreamResponse);
 }
