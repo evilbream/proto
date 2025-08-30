@@ -565,30 +565,29 @@ func (x *CompressDirectoryResponse) GetSuccess() bool {
 	return false
 }
 
-type GetStreamRequest struct {
+type GetRangeRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Path          string                 `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`                             // The file path to stream
-	ChunkSize     int64                  `protobuf:"varint,2,opt,name=chunk_size,json=chunkSize,proto3" json:"chunk_size,omitempty"` // Size of each chunk to stream
 	StartByte     int64                  `protobuf:"varint,3,opt,name=start_byte,json=startByte,proto3" json:"start_byte,omitempty"` // Offset to start streaming from
 	EndByte       int64                  `protobuf:"varint,4,opt,name=end_byte,json=endByte,proto3" json:"end_byte,omitempty"`       // Total length to stream
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetStreamRequest) Reset() {
-	*x = GetStreamRequest{}
+func (x *GetRangeRequest) Reset() {
+	*x = GetRangeRequest{}
 	mi := &file_fs_fs_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetStreamRequest) String() string {
+func (x *GetRangeRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetStreamRequest) ProtoMessage() {}
+func (*GetRangeRequest) ProtoMessage() {}
 
-func (x *GetStreamRequest) ProtoReflect() protoreflect.Message {
+func (x *GetRangeRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_fs_fs_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -600,63 +599,57 @@ func (x *GetStreamRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetStreamRequest.ProtoReflect.Descriptor instead.
-func (*GetStreamRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetRangeRequest.ProtoReflect.Descriptor instead.
+func (*GetRangeRequest) Descriptor() ([]byte, []int) {
 	return file_fs_fs_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *GetStreamRequest) GetPath() string {
+func (x *GetRangeRequest) GetPath() string {
 	if x != nil {
 		return x.Path
 	}
 	return ""
 }
 
-func (x *GetStreamRequest) GetChunkSize() int64 {
-	if x != nil {
-		return x.ChunkSize
-	}
-	return 0
-}
-
-func (x *GetStreamRequest) GetStartByte() int64 {
+func (x *GetRangeRequest) GetStartByte() int64 {
 	if x != nil {
 		return x.StartByte
 	}
 	return 0
 }
 
-func (x *GetStreamRequest) GetEndByte() int64 {
+func (x *GetRangeRequest) GetEndByte() int64 {
 	if x != nil {
 		return x.EndByte
 	}
 	return 0
 }
 
-type GetStreamResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Chunk         []byte                 `protobuf:"bytes,1,opt,name=chunk,proto3" json:"chunk,omitempty"`                                       // The content chunk of the file
-	TotalSize     int64                  `protobuf:"varint,2,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`             // Offset for the file content
-	ContentLength int64                  `protobuf:"varint,3,opt,name=content_length,json=contentLength,proto3" json:"content_length,omitempty"` // Total length of the file
-	ContentRange  string                 `protobuf:"bytes,4,opt,name=content_range,json=contentRange,proto3" json:"content_range,omitempty"`     // Content-Range header value
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+type GetRangeResponse struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Chunk          []byte                 `protobuf:"bytes,1,opt,name=chunk,proto3" json:"chunk,omitempty"`                                          // The content chunk of the file
+	TotalSize      int64                  `protobuf:"varint,2,opt,name=total_size,json=totalSize,proto3" json:"total_size,omitempty"`                // Offset for the file content
+	ContentRange   string                 `protobuf:"bytes,4,opt,name=content_range,json=contentRange,proto3" json:"content_range,omitempty"`        // Content-Range header value
+	PartialContent bool                   `protobuf:"varint,5,opt,name=partial_content,json=partialContent,proto3" json:"partial_content,omitempty"` // Indicates if this is a partial content response
+	IsLastChunk    bool                   `protobuf:"varint,6,opt,name=is_last_chunk,json=isLastChunk,proto3" json:"is_last_chunk,omitempty"`        // Indicates if this is the last chunk of the file for partial content only
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
-func (x *GetStreamResponse) Reset() {
-	*x = GetStreamResponse{}
+func (x *GetRangeResponse) Reset() {
+	*x = GetRangeResponse{}
 	mi := &file_fs_fs_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetStreamResponse) String() string {
+func (x *GetRangeResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetStreamResponse) ProtoMessage() {}
+func (*GetRangeResponse) ProtoMessage() {}
 
-func (x *GetStreamResponse) ProtoReflect() protoreflect.Message {
+func (x *GetRangeResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_fs_fs_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -668,37 +661,44 @@ func (x *GetStreamResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetStreamResponse.ProtoReflect.Descriptor instead.
-func (*GetStreamResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetRangeResponse.ProtoReflect.Descriptor instead.
+func (*GetRangeResponse) Descriptor() ([]byte, []int) {
 	return file_fs_fs_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *GetStreamResponse) GetChunk() []byte {
+func (x *GetRangeResponse) GetChunk() []byte {
 	if x != nil {
 		return x.Chunk
 	}
 	return nil
 }
 
-func (x *GetStreamResponse) GetTotalSize() int64 {
+func (x *GetRangeResponse) GetTotalSize() int64 {
 	if x != nil {
 		return x.TotalSize
 	}
 	return 0
 }
 
-func (x *GetStreamResponse) GetContentLength() int64 {
-	if x != nil {
-		return x.ContentLength
-	}
-	return 0
-}
-
-func (x *GetStreamResponse) GetContentRange() string {
+func (x *GetRangeResponse) GetContentRange() string {
 	if x != nil {
 		return x.ContentRange
 	}
 	return ""
+}
+
+func (x *GetRangeResponse) GetPartialContent() bool {
+	if x != nil {
+		return x.PartialContent
+	}
+	return false
+}
+
+func (x *GetRangeResponse) GetIsLastChunk() bool {
+	if x != nil {
+		return x.IsLastChunk
+	}
+	return false
 }
 
 var File_fs_fs_proto protoreflect.FileDescriptor
@@ -742,32 +742,30 @@ const file_fs_fs_proto_rawDesc = "" +
 	"\x04path\x18\x01 \x01(\tR\x04path\x12\x1c\n" +
 	"\talgorithm\x18\x02 \x01(\tR\talgorithm\"5\n" +
 	"\x19CompressDirectoryResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x7f\n" +
-	"\x10GetStreamRequest\x12\x12\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"_\n" +
+	"\x0fGetRangeRequest\x12\x12\n" +
 	"\x04path\x18\x01 \x01(\tR\x04path\x12\x1d\n" +
 	"\n" +
-	"chunk_size\x18\x02 \x01(\x03R\tchunkSize\x12\x1d\n" +
-	"\n" +
 	"start_byte\x18\x03 \x01(\x03R\tstartByte\x12\x19\n" +
-	"\bend_byte\x18\x04 \x01(\x03R\aendByte\"\x94\x01\n" +
-	"\x11GetStreamResponse\x12\x14\n" +
+	"\bend_byte\x18\x04 \x01(\x03R\aendByte\"\xb9\x01\n" +
+	"\x10GetRangeResponse\x12\x14\n" +
 	"\x05chunk\x18\x01 \x01(\fR\x05chunk\x12\x1d\n" +
 	"\n" +
-	"total_size\x18\x02 \x01(\x03R\ttotalSize\x12%\n" +
-	"\x0econtent_length\x18\x03 \x01(\x03R\rcontentLength\x12#\n" +
-	"\rcontent_range\x18\x04 \x01(\tR\fcontentRange2\xb3\x03\n" +
+	"total_size\x18\x02 \x01(\x03R\ttotalSize\x12#\n" +
+	"\rcontent_range\x18\x04 \x01(\tR\fcontentRange\x12'\n" +
+	"\x0fpartial_content\x18\x05 \x01(\bR\x0epartialContent\x12\"\n" +
+	"\ris_last_chunk\x18\x06 \x01(\bR\visLastChunk2\xb0\x03\n" +
 	"\n" +
 	"FileServer\x12,\n" +
-	"\aListDir\x12\x0f.ListdirRequest\x1a\x10.ListdirResponse\x12.\n" +
+	"\aListdir\x12\x0f.ListdirRequest\x1a\x10.ListdirResponse\x12.\n" +
 	"\aGetFile\x12\x0f.GetFileRequest\x1a\x10.GetFileResponse0\x01\x12.\n" +
 	"\aPutFile\x12\x0f.PutFileRequest\x1a\x10.PutFileResponse(\x01\x12/\n" +
 	"\n" +
 	"UpdateFile\x12\x0f.PutFileRequest\x1a\x10.PutFileResponse\x12J\n" +
 	"\x11CompressDirectory\x12\x19.CompressDirectoryRequest\x1a\x1a.CompressDirectoryResponse\x12/\n" +
 	"\x04Ping\x12\x12.PingServerRequest\x1a\x13.PingServerResponse\x120\n" +
-	"\vGetFileInfo\x12\x0f.GetFileRequest\x1a\x10.GetFileResponse\x127\n" +
-	"\n" +
-	"StreamFile\x12\x11.GetStreamRequest\x1a\x12.GetStreamResponse(\x010\x01B\x1fZ\x1dgithub.com/evilbream/proto/fsb\x06proto3"
+	"\vGetFileInfo\x12\x0f.GetFileRequest\x1a\x10.GetFileResponse\x124\n" +
+	"\tRangeFile\x12\x10.GetRangeRequest\x1a\x11.GetRangeResponse(\x010\x01B\x1fZ\x1dgithub.com/evilbream/proto/fsb\x06proto3"
 
 var (
 	file_fs_fs_proto_rawDescOnce sync.Once
@@ -793,26 +791,26 @@ var file_fs_fs_proto_goTypes = []any{
 	(*PutFileResponse)(nil),           // 7: PutFileResponse
 	(*CompressDirectoryRequest)(nil),  // 8: CompressDirectoryRequest
 	(*CompressDirectoryResponse)(nil), // 9: CompressDirectoryResponse
-	(*GetStreamRequest)(nil),          // 10: GetStreamRequest
-	(*GetStreamResponse)(nil),         // 11: GetStreamResponse
+	(*GetRangeRequest)(nil),           // 10: GetRangeRequest
+	(*GetRangeResponse)(nil),          // 11: GetRangeResponse
 }
 var file_fs_fs_proto_depIdxs = []int32{
-	2,  // 0: FileServer.ListDir:input_type -> ListdirRequest
+	2,  // 0: FileServer.Listdir:input_type -> ListdirRequest
 	4,  // 1: FileServer.GetFile:input_type -> GetFileRequest
 	6,  // 2: FileServer.PutFile:input_type -> PutFileRequest
 	6,  // 3: FileServer.UpdateFile:input_type -> PutFileRequest
 	8,  // 4: FileServer.CompressDirectory:input_type -> CompressDirectoryRequest
 	0,  // 5: FileServer.Ping:input_type -> PingServerRequest
 	4,  // 6: FileServer.GetFileInfo:input_type -> GetFileRequest
-	10, // 7: FileServer.StreamFile:input_type -> GetStreamRequest
-	3,  // 8: FileServer.ListDir:output_type -> ListdirResponse
+	10, // 7: FileServer.RangeFile:input_type -> GetRangeRequest
+	3,  // 8: FileServer.Listdir:output_type -> ListdirResponse
 	5,  // 9: FileServer.GetFile:output_type -> GetFileResponse
 	7,  // 10: FileServer.PutFile:output_type -> PutFileResponse
 	7,  // 11: FileServer.UpdateFile:output_type -> PutFileResponse
 	9,  // 12: FileServer.CompressDirectory:output_type -> CompressDirectoryResponse
 	1,  // 13: FileServer.Ping:output_type -> PingServerResponse
 	5,  // 14: FileServer.GetFileInfo:output_type -> GetFileResponse
-	11, // 15: FileServer.StreamFile:output_type -> GetStreamResponse
+	11, // 15: FileServer.RangeFile:output_type -> GetRangeResponse
 	8,  // [8:16] is the sub-list for method output_type
 	0,  // [0:8] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name

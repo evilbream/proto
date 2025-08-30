@@ -19,28 +19,28 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	FileServer_ListDir_FullMethodName           = "/FileServer/ListDir"
+	FileServer_Listdir_FullMethodName           = "/FileServer/Listdir"
 	FileServer_GetFile_FullMethodName           = "/FileServer/GetFile"
 	FileServer_PutFile_FullMethodName           = "/FileServer/PutFile"
 	FileServer_UpdateFile_FullMethodName        = "/FileServer/UpdateFile"
 	FileServer_CompressDirectory_FullMethodName = "/FileServer/CompressDirectory"
 	FileServer_Ping_FullMethodName              = "/FileServer/Ping"
 	FileServer_GetFileInfo_FullMethodName       = "/FileServer/GetFileInfo"
-	FileServer_StreamFile_FullMethodName        = "/FileServer/StreamFile"
+	FileServer_RangeFile_FullMethodName         = "/FileServer/RangeFile"
 )
 
 // FileServerClient is the client API for FileServer service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type FileServerClient interface {
-	ListDir(ctx context.Context, in *ListdirRequest, opts ...grpc.CallOption) (*ListdirResponse, error)
+	Listdir(ctx context.Context, in *ListdirRequest, opts ...grpc.CallOption) (*ListdirResponse, error)
 	GetFile(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[GetFileResponse], error)
 	PutFile(ctx context.Context, opts ...grpc.CallOption) (grpc.ClientStreamingClient[PutFileRequest, PutFileResponse], error)
 	UpdateFile(ctx context.Context, in *PutFileRequest, opts ...grpc.CallOption) (*PutFileResponse, error)
 	CompressDirectory(ctx context.Context, in *CompressDirectoryRequest, opts ...grpc.CallOption) (*CompressDirectoryResponse, error)
 	Ping(ctx context.Context, in *PingServerRequest, opts ...grpc.CallOption) (*PingServerResponse, error)
 	GetFileInfo(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (*GetFileResponse, error)
-	StreamFile(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[GetStreamRequest, GetStreamResponse], error)
+	RangeFile(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[GetRangeRequest, GetRangeResponse], error)
 }
 
 type fileServerClient struct {
@@ -51,10 +51,10 @@ func NewFileServerClient(cc grpc.ClientConnInterface) FileServerClient {
 	return &fileServerClient{cc}
 }
 
-func (c *fileServerClient) ListDir(ctx context.Context, in *ListdirRequest, opts ...grpc.CallOption) (*ListdirResponse, error) {
+func (c *fileServerClient) Listdir(ctx context.Context, in *ListdirRequest, opts ...grpc.CallOption) (*ListdirResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListdirResponse)
-	err := c.cc.Invoke(ctx, FileServer_ListDir_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, FileServer_Listdir_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -133,31 +133,31 @@ func (c *fileServerClient) GetFileInfo(ctx context.Context, in *GetFileRequest, 
 	return out, nil
 }
 
-func (c *fileServerClient) StreamFile(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[GetStreamRequest, GetStreamResponse], error) {
+func (c *fileServerClient) RangeFile(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[GetRangeRequest, GetRangeResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &FileServer_ServiceDesc.Streams[2], FileServer_StreamFile_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &FileServer_ServiceDesc.Streams[2], FileServer_RangeFile_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &grpc.GenericClientStream[GetStreamRequest, GetStreamResponse]{ClientStream: stream}
+	x := &grpc.GenericClientStream[GetRangeRequest, GetRangeResponse]{ClientStream: stream}
 	return x, nil
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type FileServer_StreamFileClient = grpc.BidiStreamingClient[GetStreamRequest, GetStreamResponse]
+type FileServer_RangeFileClient = grpc.BidiStreamingClient[GetRangeRequest, GetRangeResponse]
 
 // FileServerServer is the server API for FileServer service.
 // All implementations must embed UnimplementedFileServerServer
 // for forward compatibility.
 type FileServerServer interface {
-	ListDir(context.Context, *ListdirRequest) (*ListdirResponse, error)
+	Listdir(context.Context, *ListdirRequest) (*ListdirResponse, error)
 	GetFile(*GetFileRequest, grpc.ServerStreamingServer[GetFileResponse]) error
 	PutFile(grpc.ClientStreamingServer[PutFileRequest, PutFileResponse]) error
 	UpdateFile(context.Context, *PutFileRequest) (*PutFileResponse, error)
 	CompressDirectory(context.Context, *CompressDirectoryRequest) (*CompressDirectoryResponse, error)
 	Ping(context.Context, *PingServerRequest) (*PingServerResponse, error)
 	GetFileInfo(context.Context, *GetFileRequest) (*GetFileResponse, error)
-	StreamFile(grpc.BidiStreamingServer[GetStreamRequest, GetStreamResponse]) error
+	RangeFile(grpc.BidiStreamingServer[GetRangeRequest, GetRangeResponse]) error
 	mustEmbedUnimplementedFileServerServer()
 }
 
@@ -168,8 +168,8 @@ type FileServerServer interface {
 // pointer dereference when methods are called.
 type UnimplementedFileServerServer struct{}
 
-func (UnimplementedFileServerServer) ListDir(context.Context, *ListdirRequest) (*ListdirResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListDir not implemented")
+func (UnimplementedFileServerServer) Listdir(context.Context, *ListdirRequest) (*ListdirResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Listdir not implemented")
 }
 func (UnimplementedFileServerServer) GetFile(*GetFileRequest, grpc.ServerStreamingServer[GetFileResponse]) error {
 	return status.Errorf(codes.Unimplemented, "method GetFile not implemented")
@@ -189,8 +189,8 @@ func (UnimplementedFileServerServer) Ping(context.Context, *PingServerRequest) (
 func (UnimplementedFileServerServer) GetFileInfo(context.Context, *GetFileRequest) (*GetFileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetFileInfo not implemented")
 }
-func (UnimplementedFileServerServer) StreamFile(grpc.BidiStreamingServer[GetStreamRequest, GetStreamResponse]) error {
-	return status.Errorf(codes.Unimplemented, "method StreamFile not implemented")
+func (UnimplementedFileServerServer) RangeFile(grpc.BidiStreamingServer[GetRangeRequest, GetRangeResponse]) error {
+	return status.Errorf(codes.Unimplemented, "method RangeFile not implemented")
 }
 func (UnimplementedFileServerServer) mustEmbedUnimplementedFileServerServer() {}
 func (UnimplementedFileServerServer) testEmbeddedByValue()                    {}
@@ -213,20 +213,20 @@ func RegisterFileServerServer(s grpc.ServiceRegistrar, srv FileServerServer) {
 	s.RegisterService(&FileServer_ServiceDesc, srv)
 }
 
-func _FileServer_ListDir_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _FileServer_Listdir_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListdirRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FileServerServer).ListDir(ctx, in)
+		return srv.(FileServerServer).Listdir(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: FileServer_ListDir_FullMethodName,
+		FullMethod: FileServer_Listdir_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FileServerServer).ListDir(ctx, req.(*ListdirRequest))
+		return srv.(FileServerServer).Listdir(ctx, req.(*ListdirRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -321,12 +321,12 @@ func _FileServer_GetFileInfo_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _FileServer_StreamFile_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(FileServerServer).StreamFile(&grpc.GenericServerStream[GetStreamRequest, GetStreamResponse]{ServerStream: stream})
+func _FileServer_RangeFile_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(FileServerServer).RangeFile(&grpc.GenericServerStream[GetRangeRequest, GetRangeResponse]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type FileServer_StreamFileServer = grpc.BidiStreamingServer[GetStreamRequest, GetStreamResponse]
+type FileServer_RangeFileServer = grpc.BidiStreamingServer[GetRangeRequest, GetRangeResponse]
 
 // FileServer_ServiceDesc is the grpc.ServiceDesc for FileServer service.
 // It's only intended for direct use with grpc.RegisterService,
@@ -336,8 +336,8 @@ var FileServer_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*FileServerServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListDir",
-			Handler:    _FileServer_ListDir_Handler,
+			MethodName: "Listdir",
+			Handler:    _FileServer_Listdir_Handler,
 		},
 		{
 			MethodName: "UpdateFile",
@@ -368,8 +368,8 @@ var FileServer_ServiceDesc = grpc.ServiceDesc{
 			ClientStreams: true,
 		},
 		{
-			StreamName:    "StreamFile",
-			Handler:       _FileServer_StreamFile_Handler,
+			StreamName:    "RangeFile",
+			Handler:       _FileServer_RangeFile_Handler,
 			ServerStreams: true,
 			ClientStreams: true,
 		},
