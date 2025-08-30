@@ -632,6 +632,7 @@ type GetRangeResponse struct {
 	ContentRange   string                 `protobuf:"bytes,4,opt,name=content_range,json=contentRange,proto3" json:"content_range,omitempty"`        // Content-Range header value
 	PartialContent bool                   `protobuf:"varint,5,opt,name=partial_content,json=partialContent,proto3" json:"partial_content,omitempty"` // Indicates if this is a partial content response
 	IsLastChunk    bool                   `protobuf:"varint,6,opt,name=is_last_chunk,json=isLastChunk,proto3" json:"is_last_chunk,omitempty"`        // Indicates if this is the last chunk of the file for partial content only
+	ChunkIndex     int64                  `protobuf:"varint,7,opt,name=chunk_index,json=chunkIndex,proto3" json:"chunk_index,omitempty"`             // Index of the chunk in the stream
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -701,6 +702,13 @@ func (x *GetRangeResponse) GetIsLastChunk() bool {
 	return false
 }
 
+func (x *GetRangeResponse) GetChunkIndex() int64 {
+	if x != nil {
+		return x.ChunkIndex
+	}
+	return 0
+}
+
 var File_fs_fs_proto protoreflect.FileDescriptor
 
 const file_fs_fs_proto_rawDesc = "" +
@@ -747,14 +755,16 @@ const file_fs_fs_proto_rawDesc = "" +
 	"\x04path\x18\x01 \x01(\tR\x04path\x12\x1d\n" +
 	"\n" +
 	"start_byte\x18\x03 \x01(\x03R\tstartByte\x12\x19\n" +
-	"\bend_byte\x18\x04 \x01(\x03R\aendByte\"\xb9\x01\n" +
+	"\bend_byte\x18\x04 \x01(\x03R\aendByte\"\xda\x01\n" +
 	"\x10GetRangeResponse\x12\x14\n" +
 	"\x05chunk\x18\x01 \x01(\fR\x05chunk\x12\x1d\n" +
 	"\n" +
 	"total_size\x18\x02 \x01(\x03R\ttotalSize\x12#\n" +
 	"\rcontent_range\x18\x04 \x01(\tR\fcontentRange\x12'\n" +
 	"\x0fpartial_content\x18\x05 \x01(\bR\x0epartialContent\x12\"\n" +
-	"\ris_last_chunk\x18\x06 \x01(\bR\visLastChunk2\xb0\x03\n" +
+	"\ris_last_chunk\x18\x06 \x01(\bR\visLastChunk\x12\x1f\n" +
+	"\vchunk_index\x18\a \x01(\x03R\n" +
+	"chunkIndex2\xb0\x03\n" +
 	"\n" +
 	"FileServer\x12,\n" +
 	"\aListdir\x12\x0f.ListdirRequest\x1a\x10.ListdirResponse\x12.\n" +

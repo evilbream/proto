@@ -67,7 +67,7 @@ message GetRangeResponse {
     string content_range = 4; // Content-Range header value
     bool partial_content = 5; // Indicates if this is a partial content response
     bool is_last_chunk = 6; // Indicates if this is the last chunk of the file for partial content only 
-
+    int64 chunk_index = 7; // Index of the chunk in the stream
 }
 
 service FileServer {
